@@ -1,10 +1,10 @@
 class Xteam < Formula
   desc "Three-pane project orchestrator: pm / tl / dev"
   homepage "https://github.com/ffqa/xpier-xteam"
-  url "https://github.com/ffqa/xpier-xteam/releases/download/xteam-v0.1.6/xteam-0.1.6.tar.gz"
-  sha256 "c9593477af6e6e4ef563d29769934a33ee4ed7d28606da243ec20eb1d76b41a1"
+  url "https://github.com/ffqa/xpier-xteam/releases/download/xteam-v0.1.7/xteam-0.1.7.tar.gz"
+  sha256 "f3a5c6ad0a1b181bdf28c000b5b6c8690cbd8543a4d0e4dff79f5a4629f2a42a"
   license "MIT"
-  version "0.1.6"
+  version "0.1.7"
 
   depends_on "python@3.12"
 
