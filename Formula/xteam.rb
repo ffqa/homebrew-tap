@@ -1,10 +1,12 @@
+require "open3"
+
 class Xteam < Formula
   desc "Three-pane project orchestrator: pm / tl / dev"
   homepage "https://github.com/ffqa/xpier-xteam"
-  url "https://github.com/ffqa/xpier-xteam/releases/download/xteam-v0.2.1/xteam-0.2.1.tar.gz"
-  sha256 "e2b0356736bbee762f6fd55c7658b864efb1bed7651edb3c8d7861e24d625956"
+  url "https://github.com/ffqa/xpier-xteam/releases/download/xteam-v0.2.2/xteam-0.2.2.tar.gz"
+  sha256 "2a726b6bad48c755fa648dc716efb0dcce43dd953a2ecbf69561aea7f16de560"
   license "MIT"
-  version "0.2.1"
+  version "0.2.2"
 
   # **刻意不 depends_on 任何 Python。**
   #
@@ -25,17 +27,21 @@ class Xteam < Formula
   # 为什么不用 python@3.9：Homebrew 已停止维护 3.9，且 CLT 自带的正是它。
 
   def install
-    # install.sh 自己会找 python3（含 brew 版本化 Python 的 opt/*/libexec/bin）、
-    # 检查 ≥3.9、找不到就报明确修复指令。这里只补一条**安装前**的体检，
-    # 让 brew install 自己就失败并说清原因，而不是装完才在用户面前炸。
-    unless system("command -v python3 >/dev/null 2>&1")
-      opoo <<~EOS
-        找不到 python3。xteam 是纯 Python 工具，运行时需要一个 ≥ 3.9 的 python3。
-          · 已装 Xcode Command Line Tools 的话，通常 python3 就在 /usr/bin/python3
-          · 想用 Homebrew 的版本：brew install python@3.12
-          · 装完重跑：brew install #{full_name}
+    # python3 判定只有一个来源 = install.sh 的 preflight()（它会找 brew 版本化
+    # Python 的 opt/*/libexec/bin，比公式侧自查更准）。公式侧不再自己实现判定，
+    # 也不许用依赖 shell 语义的单字符串调用 —— Formula#system 对单字符串走
+    # Kernel.exec 不经 shell，同一行在 `brew ruby` 里成立、在 install 里却 false
+    # （0.2.1 实测踩中：/usr/bin/python3 明明在，却走了「找不到」分支）。
+    # 体检以 argv 形式委托 install.sh --check，失败输出带进 odie。
+    check_out, check_st = Open3.capture2e(
+      "bash", "install.sh", "--check", "--prefix", prefix)
+    unless check_st.success?
+      odie <<~EOS
+        安装前体检没过（install.sh --check 失败）：
+        #{check_out}
+        · 想用 Homebrew 的版本：brew install python@3.12
+        · 装完重跑：brew install #{full_name}
       EOS
-      return
     end
     system "bash", "install.sh", "--prefix", prefix
   end
