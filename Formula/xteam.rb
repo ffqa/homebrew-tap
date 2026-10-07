@@ -1,10 +1,10 @@
 class Xteam < Formula
   desc "Three-pane project orchestrator: pm / tl / dev"
   homepage "https://github.com/ffqa/xpier-xteam"
-  url "https://github.com/ffqa/xpier-xteam/releases/download/xteam-v0.2.0/xteam-0.2.0.tar.gz"
-  sha256 "4a33b10a0c2de8726219e4f816d8e36cfdefc6b52feb2df3940f6b45524b9a12"
+  url "https://github.com/ffqa/xpier-xteam/releases/download/xteam-v0.2.1/xteam-0.2.1.tar.gz"
+  sha256 "e2b0356736bbee762f6fd55c7658b864efb1bed7651edb3c8d7861e24d625956"
   license "MIT"
-  version "0.2.0"
+  version "0.2.1"
 
   # **刻意不 depends_on 任何 Python。**
   #
@@ -33,7 +33,7 @@ class Xteam < Formula
         找不到 python3。xteam 是纯 Python 工具，运行时需要一个 ≥ 3.9 的 python3。
           · 已装 Xcode Command Line Tools 的话，通常 python3 就在 /usr/bin/python3
           · 想用 Homebrew 的版本：brew install python@3.12
-          · 装完重跑：brew install #{tap_and_name}
+          · 装完重跑：brew install #{full_name}
       EOS
       return
     end
