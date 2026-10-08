@@ -3,10 +3,10 @@ require "open3"
 class Xteam < Formula
   desc "Three-pane project orchestrator: pm / tl / dev"
   homepage "https://github.com/ffqa/xpier-xteam"
-  url "https://github.com/ffqa/xpier-xteam/releases/download/xteam-v0.2.8/xteam-0.2.8.tar.gz"
-  sha256 "caddd4b8483a9d62828204163174c64d8d0c438f626d07864b4e7d08a87bfd6f"
+  url "https://github.com/ffqa/xpier-xteam/releases/download/xteam-v0.2.9/xteam-0.2.9.tar.gz"
+  sha256 "5f02e59ced48dda710df71cfb64d6edae94206b0b14da8f44f23e501cd001a45"
   license "MIT"
-  version "0.2.8"
+  version "0.2.9"
 
   # **刻意不 depends_on 任何 Python。**
   #
