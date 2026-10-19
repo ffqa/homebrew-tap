@@ -1,26 +1,26 @@
 class Xissue < Formula
   desc "Personal AI Agent Issue & Multi-Repo Orchestrator"
   homepage "https://github.com/ffqa/xissue"
-  version "0.2.7"
+  version "0.2.8"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/ffqa/xissue/releases/download/v0.2.7/xissue-v0.2.7-darwin-arm64.tar.gz"
-      sha256 "9503fa04a37aad4fceccd3ca1b2845327ae368b8ba31321c62b63ff753aff458"
+      url "https://github.com/ffqa/xissue/releases/download/v0.2.8/xissue-v0.2.8-darwin-arm64.tar.gz"
+      sha256 "47ce52af8b267d02639b04016f1f10218200448ed5ccc6adb640fb2fd244418b"
     else
-      url "https://github.com/ffqa/xissue/releases/download/v0.2.7/xissue-v0.2.7-darwin-amd64.tar.gz"
-      sha256 "0921ed374aa9e1dc421072367d174a6fd53232341193c74b6898d515f4df2aaa"
+      url "https://github.com/ffqa/xissue/releases/download/v0.2.8/xissue-v0.2.8-darwin-amd64.tar.gz"
+      sha256 "3b8ab449b7f005b935d3fa7ba39d46cca211100ccd22399661bf104f66d628cf"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/ffqa/xissue/releases/download/v0.2.7/xissue-v0.2.7-linux-arm64.tar.gz"
-      sha256 "4d926acefa944a8bdab924c0b99c990b897babeaf1cd9e5b6d2a024fd949783d"
+      url "https://github.com/ffqa/xissue/releases/download/v0.2.8/xissue-v0.2.8-linux-arm64.tar.gz"
+      sha256 "4ca99250f65cd257f96cdd0e3d60815b75ecadc35d7d79e3dda125f7db590deb"
     else
-      url "https://github.com/ffqa/xissue/releases/download/v0.2.7/xissue-v0.2.7-linux-amd64.tar.gz"
-      sha256 "5a7174b7716ca0779855f2b2499521736bf86ac696f8a1a76e32e9d58b735d63"
+      url "https://github.com/ffqa/xissue/releases/download/v0.2.8/xissue-v0.2.8-linux-amd64.tar.gz"
+      sha256 "0e76459baf5c5624fb9b30d945519fc17d3d7423fb19d8baf27b0fcef8289626"
     end
   end
 
@@ -36,6 +36,16 @@ class Xissue < Formula
     working_dir Dir.home
     log_path var/"log/xissue.log"
     error_log_path var/"log/xissue.log"
+  end
+
+  def caveats
+    <<~EOS
+      启动后台常驻服务方式（二选一）：
+      1. Homebrew 服务管理:
+         brew services start ffqa/tap/xissue
+      2. xIssue 自管服务 (推荐，开机自启):
+         xissue service install
+    EOS
   end
 
   test do
