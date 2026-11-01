@@ -7,20 +7,20 @@ class Xkb < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/ffqa/xkb/releases/download/v0.1.3/xkb-v0.1.3-darwin-arm64.tar.gz"
-      sha256 "00c80a6519a22b6872840f19ff32bbcbf52715de9c21547c95cd105a1ea52435"
+      sha256 "0e2dfeed361cff4656ec70db337e6c56a3dc96c178e88a6ed8fdef26c4945111"
     else
       url "https://github.com/ffqa/xkb/releases/download/v0.1.3/xkb-v0.1.3-darwin-amd64.tar.gz"
-      sha256 "962a058d3ef2b7df0f6071b56f306cc896c660d64d0fcf679813d910115446f1"
+      sha256 "b409352bb460e1957f1f1cf0ccdd5164f4f791745f930df53d53ddc527cd56c6"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/ffqa/xkb/releases/download/v0.1.3/xkb-v0.1.3-linux-arm64.tar.gz"
-      sha256 "c57d314611ed7ebe03c3373589f1c042c9415a62d2bbd46a9b0be3d02798982f"
+      sha256 "7ae395c685a1aea6410a3dfe081eb102038a34b5519ca0d1b65fccd0211ab593"
     else
       url "https://github.com/ffqa/xkb/releases/download/v0.1.3/xkb-v0.1.3-linux-amd64.tar.gz"
-      sha256 "999139d61796e63cada0aa3f891a0379f39ffa8837589eabb1b8a3847084e04b"
+      sha256 "ca499a106b0a16e5efba0c6b54aa916a19a6a7b381f02db009488f7ea7e5557b"
     end
   end
 
